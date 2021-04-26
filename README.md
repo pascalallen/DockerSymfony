@@ -1,6 +1,7 @@
-# Pascal Allen
+# Sample Docker Symfony App
 
-My personal website. Fully containerized PHP and React web application. (WORK IN PROGRESS)
+Fully containerized sample web application on PHP version 8 with a Symfony API backend, and a React + SASS frontend.
+Docker containers for MySQL, NGINX, and PHP-FPM.
 
 ## Prerequisites
 
@@ -11,8 +12,7 @@ My personal website. Fully containerized PHP and React web application. (WORK IN
 
 ### Clone Repository
 
-$ `cd <projects-parent-directory>`
-$ `git clone https://github.com/pascalallen/PascalAllen.git`
+$ `cd <projects-parent-directory> && git clone https://github.com/pascalallen/DockerSymfony.git`
 
 ### Create Environment file
 

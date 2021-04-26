@@ -1,8 +1,8 @@
 FROM nginx:latest
 
-ENV VIRTUAL_HOST="pascalallen.test"
+ENV VIRTUAL_HOST="dockersymfony.test"
 ENV APP_PUBLIC="/var/www/app/public"
-ENV PROXY_PASS="pascalallen-fpm:9000"
+ENV PROXY_PASS="dockersymfony-fpm:9000"
 
 COPY ./conf/site.conf.template /etc/nginx/conf.d/site.conf.template
 

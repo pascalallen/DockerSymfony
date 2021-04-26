@@ -1,10 +1,10 @@
 version: "3.9"
 
 services:
-  pascalallen-nginx:
+  dockersymfony-nginx:
     build:
       context: ./etc/nginx
-    container_name: pascalallen-nginx
+    container_name: dockersymfony-nginx
     ports:
       - "80:80"
     env_file:
@@ -12,9 +12,9 @@ services:
     volumes:
       - .:/var/www/app:cached
     networks:
-      - pascalallen_app_net
+      - dockersymfony_app_net
 
-  pascalallen-fpm:
+  dockersymfony-fpm:
     build:
       context: ./etc/fpm
       args:
@@ -26,12 +26,12 @@ services:
     volumes:
       - .:/var/www/app:cached
     networks:
-      - pascalallen_app_net
+      - dockersymfony_app_net
 
-  pascalallen-db:
+  dockersymfony-db:
     build:
       context: ./etc/db
-    container_name: pascalallen-db
+    container_name: dockersymfony-db
     ports:
       - 3307:3306
     env_file:
@@ -43,10 +43,10 @@ services:
         source: db
         target: /var/lib/mysql
     networks:
-      - pascalallen_app_net
+      - dockersymfony_app_net
 
 networks:
-  pascalallen_app_net:
+  dockersymfony_app_net:
     driver: bridge
 
 volumes:

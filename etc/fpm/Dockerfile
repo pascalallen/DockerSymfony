@@ -3,7 +3,7 @@ FROM php:8.0-fpm
 WORKDIR /var/www/app
 
 ARG PHP_INI_MODE
-ENV DB_HOST pascalallen-db
+ENV DB_HOST dockersymfony-db
 ENV DB_PORT 3306
 
 RUN apt-get update \
