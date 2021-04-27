@@ -1,6 +1,6 @@
 # Sample Docker Symfony App
 
-Fully containerized sample web application on PHP version 8 with a Symfony API backend, and a React + SASS frontend.
+Fully containerized sample web application on PHP version 8 with a Symfony API backend.
 Docker containers for MySQL, NGINX, and PHP-FPM.
 
 ## Prerequisites
