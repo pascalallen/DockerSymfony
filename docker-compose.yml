@@ -17,8 +17,6 @@ services:
   dockersymfony-fpm:
     build:
       context: ./etc/fpm
-      args:
-        PHP_INI_MODE: development
     environment:
       - LOG_STREAM=/tmp/stdout
     env_file:

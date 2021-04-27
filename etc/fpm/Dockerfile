@@ -2,7 +2,6 @@ FROM php:8.0-fpm
 
 WORKDIR /var/www/app
 
-ARG PHP_INI_MODE
 ENV DB_HOST dockersymfony-db
 ENV DB_PORT 3306
 
@@ -31,7 +30,7 @@ RUN apt-get update \
     && docker-php-ext-install pdo pdo_mysql \
     && rm -rf /var/lib/apt/lists/*
 
-COPY ./conf/php.ini-${PHP_INI_MODE} /usr/local/etc/php/php.ini
+COPY ./conf/php.ini /usr/local/etc/php/php.ini
 
 RUN rm /usr/local/etc/php-fpm.d/www.conf
 COPY ./conf/www.conf /usr/local/etc/php-fpm.d/www.conf
@@ -39,14 +38,9 @@ COPY ./conf/www.conf /usr/local/etc/php-fpm.d/www.conf
 COPY ./wait-for-it.sh /usr/bin/wait-for-it.sh
 RUN chmod +x /usr/bin/wait-for-it.sh
 
-COPY ./init.sh /init.sh
-RUN chmod +x /init.sh
-
 RUN useradd -ms /bin/bash pascalallen
 
 RUN chown -R pascalallen:pascalallen /var/www/app
 
 # Workaround https://bugs.php.net/bug.php?id=71880
 RUN mkfifo /tmp/stdout && chmod 777 /tmp/stdout
-
-ENTRYPOINT /bin/bash /usr/bin/wait-for-it.sh -t 60 $DB_HOST:$DB_PORT -- /init.sh

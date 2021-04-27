@@ -20,12 +20,20 @@ $ `cp .env .env.local`
 
 ### Bring Up Environment
 
-$ `docker-compose build && docker-compose up -d`
+$ `bin/up`
 
 ### Install Composer Dependencies
 
-$ `composer install`
+$ `bin/composer install`
+
+### Run Migrations
+
+$ `bin/console doctrine:migrations:migrate`
 
 ### Take Down Environment
 
-$ `docker-compose down`
+$ `bin/down`
+
+### Run Unit Tests
+
+$ `bin/phpunit`

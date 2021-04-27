@@ -3,3 +3,5 @@
 # change to the project root
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd $DIR/..
+
+docker-compose exec -u pascalallen dockersymfony-fpm "$@"

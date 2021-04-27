@@ -1,13 +1,19 @@
-#!/usr/bin/env php
-<?php
+#!/usr/bin/env bash
 
-if (!file_exists(dirname(__DIR__).'/vendor/symfony/phpunit-bridge/bin/simple-phpunit.php')) {
-    echo "Unable to find the `simple-phpunit.php` script in `vendor/symfony/phpunit-bridge/bin/`.\n";
-    exit(1);
-}
+# change to the project root
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd $DIR/..
 
-if (false === getenv('SYMFONY_PHPUNIT_DIR')) {
-    putenv('SYMFONY_PHPUNIT_DIR='.__DIR__.'/.phpunit');
-}
-
-require dirname(__DIR__).'/vendor/symfony/phpunit-bridge/bin/simple-phpunit.php';
+# add -c to turn on code coverage
+if [[ "$1" == "-c" ]]
+then
+    shift;
+    docker-compose exec -u pascalallen dockersymfony-fpm php vendor/bin/phpunit \
+        --cache-result-file var/cache/.phpunit.result.cache \
+        "$@"
+else
+    docker-compose exec -u pascalallen dockersymfony-fpm php vendor/bin/phpunit \
+        --cache-result-file var/cache/.phpunit.result.cache \
+        --no-coverage \
+        "$@"
+fi
