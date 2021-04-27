@@ -10,6 +10,14 @@ Docker containers for MySQL, NGINX, and PHP-FPM.
 
 ## Development Environment Setup
 
+### Edit Hosts File
+
+Add the following entry to your /etc/hosts file:
+
+```
+127.0.0.1 dockersymfony.test
+```
+
 ### Clone Repository
 
 $ `cd <projects-parent-directory> && git clone https://github.com/pascalallen/DockerSymfony.git`
@@ -25,10 +33,6 @@ $ `bin/up`
 ### Install Composer Dependencies
 
 $ `bin/composer install`
-
-### Run Migrations
-
-$ `bin/console doctrine:migrations:migrate`
 
 ### Take Down Environment
 
